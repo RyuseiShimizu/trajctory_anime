@@ -42,13 +42,13 @@ def load_pcd(pcd_files=False):
 
 def pose_to_df(input):
     df = pd.read_csv(input)
-    df = df[["lidar_pose.x",
-             "lidar_pose.y",
-             "lidar_pose.z",
+    df = df[["point.x",
+             "point.y",
+             "point.z",
              ]]
-    df = df.rename(columns={'lidar_pose.x': 'x',
-                            'lidar_pose.y': 'y',
-                            'lidar_pose.z': 'z',
+    df = df.rename(columns={'point.x': 'x',
+                            'point.y': 'y',
+                            'point.z': 'z',
                             })
     return df
 
@@ -82,7 +82,7 @@ def _update(frame, x, y, df, file_name, xlim, ylim, pointcloud):
 
 def main():
     print('ReadME: ')
-    print("python test.py <option> <play_rate> <traj_csv> <out_dir> <PCDs>")
+    print("python3 traj_anime_with_pcd.py <option> <play_rate> <traj_csv> <out_dir> <PCDs>")
     print("max play_rate is 100")
     print("<option> = show : plot_show")
     print("<option> = save : plot_save as gif")
