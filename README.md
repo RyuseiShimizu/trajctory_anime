@@ -15,7 +15,7 @@ $ python3 scripts/trajectory_animation.py <option> <play_rate> <traj_csv> <out_d
 ```
 
 * option: "show" or "save"
-* play_rate: Playback speed (max 100)
+* play_rate: Playback speed (max: 100, recomend: 1)
 * traj_csv: trajectory csv including xyz coordinate values in chronological order
 * out_dir: output directory
 
@@ -28,7 +28,7 @@ $ python3 scripts/traj_anime_with_pcd.py <option> <play_rate> <traj_csv> <out_di
 ```
 
 * option: "show" or "save"
-* play_rate: Playback speed (max 100)
+* play_rate: Playback speed (max: 100, recomend: 1)
 * traj_csv: trajectory csv including xyz coordinate values in chronological order
 * out_dir: output directory
 * PCDs: 1 or more pcd (recommended to use pcd filtered by voxel_glid_filter.)
