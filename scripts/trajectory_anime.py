@@ -24,13 +24,13 @@ def get_filename(dir):
 
 def pose_to_df(input):
     df = pd.read_csv(input)
-    df = df[["point.x",
-             "point.y",
-             "point.z",
+    df = df[["pose.x",
+             "pose.y",
+             "pose.z",
              ]]
-    df = df.rename(columns={'point.x': 'x',
-                            'point.y': 'y',
-                            'point.z': 'z',
+    df = df.rename(columns={'pose.x': 'x',
+                            'pose.y': 'y',
+                            'pose.z': 'z',
                             })
     return df
 
@@ -88,7 +88,7 @@ def main():
     print(df_traj['x'].size)
 
     # -------------------------------------config paramater----------------------------------------------------------
-    step_time = 100
+    step_size = 10
     # ---------------------------------------------------------------------------------------------------------------
 
     long_scale = df_traj['x'].max() - df_traj['x'].min()
@@ -114,7 +114,7 @@ def main():
         'fargs': (x, y, df_traj, file_name1, xlim, ylim),  # 関数の引数 (フレーム番号を除く)
         'interval': 100 / play_rate,  # 更新間隔 (ミリ秒)
         # フレーム番号を生成するイテレータ
-        'frames': np.arange(0, df_traj['x'].size, step_time),
+        'frames': np.arange(0, df_traj['x'].size, step_size),
         'repeat': False,  # 繰り返さない
         # 'repeat': True,  # 繰り返す
     }

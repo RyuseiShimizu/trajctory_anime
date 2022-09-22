@@ -1,5 +1,5 @@
 # trajectory_animation
-Updated (2022/08/02)
+Updated (2022/09/22)
 
 View and save vehicle trajectory
 
@@ -29,3 +29,14 @@ $ python3 traj_anime_with_pcd.py <option> <play_rate> <traj_csv> <out_dir>　<PC
 軌跡csvのx，y，z座標のヘッダ名は，pythonコード内のpose_to_dfに合わせてください．
 
 csvの方を変えてもpythonスクリプトの方を変えても良いです．
+
+play_rateを100にしても遅いと感じる場合は，pythonスクリプト内のstep_sizeを大きくしてください．
+
+### e.g. sample
+```
+$ python3 traj_anime_with_pcd.py show 1 sample/traj_meijo_univ.csv sample/　sample/2.00_meijo_univ.pcd
+```
+
+result
+
+![sample](sample/traj_meijo_univ_anime.gif)
