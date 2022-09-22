@@ -1,2 +1,2 @@
-# trajctory_anime
+# trajectory_animation
 View and save vehicle trajectory
