@@ -24,7 +24,7 @@ $ python3 scripts/trajectory_animation.py <option> <play_rate> <traj_csv> <out_d
 ### plot trajectory with PCD
 Displays trajectory on point cloud
 ```
-$ python3 scripts/traj_anime_with_pcd.py <option> <play_rate> <traj_csv> <out_dir>　<PCDs>
+$ python3 scripts/traj_anime_with_pcd.py <option> <play_rate> <traj_csv>　(<PCDs>)
 ```
 
 * option: "show" or "save"

@@ -38,17 +38,27 @@ def load_pcd(pcd_files=False):
                 pc_data = np.append(pc_data, pc.pc_data)
         return pc_data
         #plt.scatter(pc_data["x"], pc_data["y"], color='k', marker='o', s=0.01)
+    else:
+        return []
 
 
 def pose_to_df(input):
     df = pd.read_csv(input)
-    df = df[["pose.x",
+    df = df[["timestamp",
+             "pose.x",
              "pose.y",
              "pose.z",
+             #  "pose.roll",
+             #  "pose.pitch",
+             #  "pose.yaw",
              ]]
-    df = df.rename(columns={'pose.x': 'x',
+    df = df.rename(columns={'timestamp': 'TimeStamp',
+                            'pose.x': 'x',
                             'pose.y': 'y',
                             'pose.z': 'z',
+                            # 'pose.roll': 'roll',
+                            # 'pose.pitch': 'pitch',
+                            # 'pose.yaw': 'yaw',
                             })
     return df
 
@@ -64,6 +74,7 @@ def _update(frame, x, y, df, file_name, xlim, ylim, pointcloud):
     # y.append(math.sin(frame))
     print("\r", str(frame) + " / " + str(df['x'].size), end="")
     # 折れ線グラフを再描画する
+    if len(pointcloud) != 0:
     plt.scatter(pointcloud["x"], pointcloud["y"],
                 color='k', marker='o', s=0.01, alpha=0.5)
     plt.scatter(x, y, color='blue', s=1, label="trajectory")
@@ -77,12 +88,14 @@ def _update(frame, x, y, df, file_name, xlim, ylim, pointcloud):
     plt.grid()
     plt.axes().set_aspect('equal')
     plt.legend(loc='upper right')
+    plt.text(xlim[1], ylim[1], str(
+        format(df['TimeStamp'][frame], '.2f')) + " sec")
     plt.tight_layout()
 
 
 def main():
     print('ReadME: ')
-    print("python3 traj_anime_with_pcd.py <option> <play_rate> <traj_csv> <out_dir> <PCDs>")
+    print("python3 traj_anime_with_pcd.py <option> <play_rate> <traj_csv> (<PCDs>)")
     print("max play_rate is 100")
     print("<option> = show : plot_show")
     print("<option> = save : plot_save as gif")
@@ -94,10 +107,9 @@ def main():
     opt = argv[1]
     play_rate = float(argv[2])
     file_path = argv[3]
-    output_path = argv[4]
     pcd_files = []
 
-    for i in range(5, argc):
+    for i in range(4, argc):
         pcd_files.append(argv[i])
 
     pointcloud = load_pcd(pcd_files)
@@ -141,11 +153,13 @@ def main():
     if(opt == "show"):
         plt.show()
 
+    output_dir = os.path.dirname(file_path)
+
     if(opt == "save"):
         # グラフを保存する
-        output_file = output_path + "/" + file_name1 + "_anime.gif"
+        output_file = output_dir + "/" + file_name1 + "_anime.gif"
         print('saving to ' + output_file + '...')
-        anime.save(output_file, writer='pillow')
+        anime.save(output_file)
 
     print('')
     print('fin')
