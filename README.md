@@ -22,6 +22,11 @@ $ python3 scripts/trajectory_checker.py <option> <play_rate> <traj_csv>　(<PCDs
 * out_dir: output directory
 * PCDs: 1 or more pcd
 
+e.g.
+sample_data
+
+![sample_data](sample_data/trajectory2_anime_zoomPCD.gif)
+
 ---
 
 ## legacy
