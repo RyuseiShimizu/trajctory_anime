@@ -9,6 +9,24 @@ $ cd trajectory_animation/
 ```
 ## Usage
 ---
+
+### plot trajectory animation
+Displays trajectory on point cloud
+```
+$ python3 scripts/trajectory_checker.py <option> <play_rate> <traj_csv>　(<PCDs>)
+```
+
+* option: "show" or "save"
+* play_rate: Playback speed (max: 100, recomend: 1)
+* traj_csv: Trajectory csv including time series xyz coordinate values and attitude angles (roll, pitch, yaw)
+* out_dir: output directory
+* PCDs: 1 or more pcd
+
+---
+
+## legacy
+---
+
 ### plot only trajectory
 ```
 $ python3 scripts/trajectory_animation.py <option> <play_rate> <traj_csv> <out_dir>

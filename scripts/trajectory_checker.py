@@ -14,11 +14,10 @@ from matplotlib.animation import PillowWriter
 def echo_useage():
     print("-----------------------------------------------")
     print('ReadME: ')
-    print("python3 traj_anime_with_pcd.py <option> <play_rate> <traj_csv> (<PCDs>)")
+    print("python3 trajectory_checker.py <option> <play_rate> <traj_csv> (<PCDs>)")
     print("max play_rate is 100")
     print("<option> = show : plot_show")
-    print("<option> = save : plot_save as gif")
-    print("<PCDs> recommend filtered for resolution 5m")
+    print("<option> = save : plot_save as mp4")
     print("-----------------------------------------------")
 
 
